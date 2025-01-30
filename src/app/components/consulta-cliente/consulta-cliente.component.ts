@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { config } from '../../configurations/environment';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class ConsultaClienteComponent {
   */
   ngOnInit() : void {
     //fazendo uma requisição para consultar (GET) os clientes na API
-    this.httpClient.get('http://localhost:5103/api/clientes')
+    this.httpClient.get(config.apiClientes + 'api/clientes')
       .subscribe({ //aguardando o retorno da API
         next: (data) => { //capturando os dados que a API devolveu
           //data -> nome de variável para receber os dados da consulta
@@ -54,7 +55,7 @@ export class ConsultaClienteComponent {
 
     onDelete(id: string){
         if(confirm('Deseja realmente excluir este cliente?')){
-           this.httpClient.delete('http://localhost:5103/api/clientes/' + id)
+           this.httpClient.delete(config.apiClientes + 'api/clientes/' + id)
            .subscribe({
                 next: (data: any) => {
                     alert(data.mensagem);

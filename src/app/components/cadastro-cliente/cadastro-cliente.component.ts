@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { config } from '../../configurations/environment';
 
 
 @Component({
@@ -54,7 +55,7 @@ constructor(private httpClient: HttpClient) { }
   */
   onSubmit() {
     //Fazendo uma requisão POST para a API
-    this.httpClient.post('http://localhost:5103/api/clientes', this.form.value)
+    this.httpClient.post(config.apiClientes + 'api/clientes', this.form.value)
       .subscribe({//aguardando o retorno da API
         next: (data: any) => { //capturando os dados que a API devolveu
           this.mensagem = data.mensagem; //capturando a mensagem da API

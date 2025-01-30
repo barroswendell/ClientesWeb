@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuPrincipalComponent } from './components/menu-principal/menu-principal.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet, 
     MenuPrincipalComponent,
-    
+    NgxSpinnerModule  
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Chart, ChartModule } from 'angular-highcharts';
+import { config } from '../../configurations/environment';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class DashboardComponent {
   */
   ngOnInit() {
     //realizando uma requisição para consulta do dashboard na API
-    this.httpClient.get('http://localhost:5103/api/clientes/dashboard')
+    this.httpClient.get(config.apiClientes + 'api/clientes/dashboard')
       .subscribe({ //aguardando o retorno da API (resposta)
         next: (data) => { //capturando os dados devolvidos pela API
          

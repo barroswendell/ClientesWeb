@@ -1,0 +1,55 @@
+<div class="bg-info d-flex align-items-center justify-content-center vh-100">
+
+
+    <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+        <div class="text-center">
+            <img src="https://www.cotiinformatica.com.br/imagens/logo-coti-informatica.svg" />
+        </div>
+
+
+        <h1 class="h4 text-center mb-3 mt-3">Autenticação de usuários</h1>
+
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert"
+            *ngIf="mensagemErro != ''">
+            <strong>{{ mensagemErro }}</strong>
+            <button type="button" class="btn-close" (click)="mensagemErro = ''"
+                   aria-label="Close"></button>
+        </div>
+
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Entre com o seu email:</label>
+                <input formControlName="email" type="email" class="form-control" id="email" placeholder="Digite seu e-mail" />
+                <span class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">
+                    Por favor, informe um endereço de email válido.
+                </span>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Entre com a sua senha:</label>
+                <input formControlName="senha" type="password" class="form-control" id="password" placeholder="Digite sua senha" />
+                <span class="text-danger" *ngIf="f['senha'].touched && f['senha'].invalid">
+                    Por favor, informe a senha com pelo menos 8 caracteres.
+                </span>
+            </div>
+            <div class="d-grid mb-2">
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+                    Entrar
+                </button>
+            </div>
+            <div class="d-grid mb-2">
+                <a routerLink="/usuarios/criar" class="btn btn-light">
+                    Nâo possui conta? Cadastre-se aqui.
+                </a>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+
+

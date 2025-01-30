@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { config } from '../../configurations/environment';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class EdicaoClienteComponent {
     this.id = this.activatedRoute.snapshot.paramMap.get('id') as string;
    
     //consultar os dados do cliente através do ID
-    this.httpClient.get('http://localhost:5103/api/clientes/' + this.id)
+    this.httpClient.get(config.apiClientes + 'api/clientes/' + this.id)
       .subscribe({ //aguardar a resposta da API
         next: (data) => { //capturando o retorno de sucesso
           //preencher o formulario com os dados do cliente
@@ -66,7 +67,7 @@ export class EdicaoClienteComponent {
   //função para capturar o SUBMIT do formulário
   onSubmit() {
   //enviar uma requisicao PUT para a API
-  this.httpClient.put('http://localhost:5103/api/clientes/' + this.id, this.form.value)
+  this.httpClient.put(config.apiClientes + 'api/clientes/' + this.id, this.form.value)
     .subscribe({ //aguardar a resposta da API
       next: (data: any) => { //capturando o retorno de sucesso
         this.mensagem = data.mensagem; //capturando a mensagem da API
